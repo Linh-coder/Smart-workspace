@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
+    <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmartWorkspace.Application\SmartWorkspace.Application.csproj" />
+    <ProjectReference Include="..\SmartWorkspace.Infrastructure\SmartWorkspace.Infrastructure.csproj" />
+    <ProjectReference Include="..\SmartWorkspace.Persistence\SmartWorkspace.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

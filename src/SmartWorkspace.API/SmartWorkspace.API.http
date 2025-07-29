@@ -1,0 +1,6 @@
+@SmartWorkspace.API_HostAddress = http://localhost:5232
+
+GET {{SmartWorkspace.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
