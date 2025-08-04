@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Persistence.Repositories
+namespace SmartWorkspace.Domain.Repositories
 {
-    internal class IUserRepository
+    public class IUserRepository
     {
     }
 }

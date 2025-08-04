@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Users.Exception
 {
-    internal class ValidationException
+    public class ValidationException
     {
     }
 }

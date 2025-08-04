@@ -1,11 +1,11 @@
-﻿using SmartWorkspace.Persistence.Context;
+﻿using SmartWorkspace.Domain.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Persistence.Seed
+namespace SmartWorkspace.Domain.Seed
 {
     public static class AppDbInitializer
     {

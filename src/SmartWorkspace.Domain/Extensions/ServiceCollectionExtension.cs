@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Extensions
 {
-    internal class ServiceCollectionExtension
+    public class ServiceCollectionExtension
     {
     }
 }

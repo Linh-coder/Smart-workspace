@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Application.Auth.Login
 {
-    internal class LoginHandler
+    public class LoginHandler
     {
     }
 }

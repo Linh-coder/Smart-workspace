@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Users.Interfaces
 {
-    internal class IEmailSender
+    public class IEmailSender
     {
     }
 }

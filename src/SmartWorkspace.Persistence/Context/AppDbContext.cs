@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Persistence.Context
+namespace SmartWorkspace.Domain.Context
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext() { }
-        public DbSet<User> Users { get; set; }
+        public AppDbContext(DbContextOptions<AppDbContext> options): base(options) { }
+        public DbSet<User> Users => Set<User>();
     }
 }
