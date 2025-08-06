@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Repositories
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         Task<int> SaveChangeAsync(CancellationToken cancellationToken = default);
     }

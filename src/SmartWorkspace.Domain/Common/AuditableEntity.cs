@@ -8,7 +8,7 @@ namespace SmartWorkspace.Domain.Common
 {
     public class AuditableEntity : BaseEntity
     {
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; private set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; private set; }
     }
 }
