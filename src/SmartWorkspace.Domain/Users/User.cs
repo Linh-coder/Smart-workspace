@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Users
 {
-    public class User : BaseEntity
+    public class User : AuditableEntity
     {
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string PasswordHash { get; set; }
+        public ICollection<UserWorkspaceRole> WorkspaceRoles { get; set; } = new List<UserWorkspaceRole>();
     }
 }

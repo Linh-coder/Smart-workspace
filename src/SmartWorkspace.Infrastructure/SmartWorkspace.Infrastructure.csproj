@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SmartWorkspace.Application\SmartWorkspace.Application.csproj" />
     <ProjectReference Include="..\SmartWorkspace.Domain\SmartWorkspace.Domain.csproj" />
+    <ProjectReference Include="..\SmartWorkspace.Persistence\SmartWorkspace.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

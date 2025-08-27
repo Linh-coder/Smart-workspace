@@ -1,4 +1,5 @@
 ﻿using SmartWorkspace.Domain.Common;
+using SmartWorkspace.Domain.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +9,17 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Repositories
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T> where T : class
     {
-        Task<T?> GetByIdAsync(Guid id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> FinAsync(Expression<Func<T, bool>> predicate);
-
         Task AddAsync(T entity);
-        void Update(T enity);
+        void Update(T entity);
         void Delete(T entity);
+        Task<T?> GetByIdAsync(Guid id);
 
-        IQueryable<T> Query();
-        Task<(IEnumerable<T> Items, int TotalCount)> GetPageAsync(
-            int pageIndex,
-            int pageSize,
-            Expression<Func<T, bool>>? predicate = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null
-            );
+        // Apply Specification
+        Task<T?> GetEntityWithSpec(ISpecification<T> spec);
+        Task<int> CountAsync(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> GetListAsync(ISpecification<T> spec);
+
     }
 }

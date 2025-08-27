@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartWorkspace.Domain.Common;
 using SmartWorkspace.Domain.Repositories;
+using SmartWorkspace.Domain.Specifications;
+using SmartWorkspace.Persistence.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Persistence.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbContext _context;
         private readonly DbSet<T> _dbSet;
@@ -21,13 +23,12 @@ namespace SmartWorkspace.Persistence.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> FinAsync(Expression<Func<T, bool>> predicate) 
+        public async Task<IReadOnlyList<T>> FindAsync(Expression<Func<T, bool>> predicate) 
             => await _dbSet.Where(predicate).ToListAsync();
 
-        public async Task<IEnumerable<T>> GetAllAsync() => await _dbSet.ToListAsync();
+        public async Task<IReadOnlyList<T>> GetAllAsync() => await _dbSet.ToListAsync();
 
         public async Task<T?> GetByIdAsync(Guid id) => await _dbSet.FindAsync(id);
-
 
         public async Task AddAsync(T entity) => await _dbSet.AddAsync(entity);
 
@@ -35,23 +36,10 @@ namespace SmartWorkspace.Persistence.Repositories
 
         public void Update(T entity) => _dbSet.Update(entity);
 
-        public IQueryable<T> Query() => _dbSet.AsQueryable();
-
-        public async Task<(IEnumerable<T> Items, int TotalCount)> GetPageAsync(int pageIndex, int pageSize, Expression<Func<T, bool>>? filter = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null)
-        {
-            var query = _dbSet.AsQueryable();
-
-            if (filter != null)
-                query = query.Where(filter);
-
-            var totalCount = await query.CountAsync();
-
-            if (orderBy != null)
-                query = orderBy(query);
-
-            var items = await query.Skip(pageIndex * pageSize).Take(pageSize).ToListAsync();
-
-            return (items, totalCount);
-        }
+        // Apply Specification
+        public async Task<T?> GetEntityWithSpec(ISpecification<T> spec) => await ApplySpecification(spec).FirstOrDefaultAsync();
+        public async Task<int> CountAsync(ISpecification<T> spec) => await ApplySpecification(spec).CountAsync();
+        public async Task<IReadOnlyList<T>> GetListAsync(ISpecification<T> spec) => await ApplySpecification(spec).ToListAsync();
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec) => SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
     }
 }

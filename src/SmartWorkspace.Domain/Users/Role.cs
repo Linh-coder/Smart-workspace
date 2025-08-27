@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SmartWorkspace.Domain.Common;
 
 namespace SmartWorkspace.Domain.Users
 {
-    public class Role
+    public class Role : BaseEntity
     {
+        public string Name { get; set; } = default!;
+        public ICollection<RolePermission> Permissions { get; set; } = new List<RolePermission>();
     }
 }

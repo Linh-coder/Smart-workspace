@@ -7,6 +7,7 @@ namespace SmartWorkspace.API.Extensions
     {
         public static void UseExceptionMiddleware(this IApplicationBuilder app)
         {
+            app.UseMiddleware<PermissionMiddleware>();
             app.UseMiddleware<ExceptionMiddleware>();
         }
 
