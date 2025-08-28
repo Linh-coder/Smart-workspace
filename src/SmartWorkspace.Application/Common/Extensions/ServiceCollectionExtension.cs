@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using SmartWorkspace.Application.DTOs;
+using SmartWorkspace.Application.Features.Authentication.DTOs;
 using SmartWorkspace.Domain.Users.Behaviors;
 
 namespace SmartWorkspace.Application.Common.Extensions

@@ -1,4 +1,4 @@
-﻿using SmartWorkspace.Application.DTOs;
+﻿using SmartWorkspace.Application.Features.Authentication.DTOs;
 
 namespace SmartWorkspace.Application.Interfaces
 {

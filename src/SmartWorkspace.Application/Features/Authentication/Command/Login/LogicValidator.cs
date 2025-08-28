@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Application.DTOs
+namespace SmartWorkspace.Application.Features.Auth.Login
 {
-    public record LoginResponse(string Token);
+    public class LogicValidator
+    {
+    }
 }

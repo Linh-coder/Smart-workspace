@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SmartWorkspace.Domain.Common;
 
-namespace SmartWorkspace.Domain.Users
+namespace SmartWorkspace.Domain.Entities.Users
 {
     public class RolePermission : BaseEntity
     {

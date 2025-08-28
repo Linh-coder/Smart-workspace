@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Domain.Users
+namespace SmartWorkspace.Domain.Entities.Users
 {
     public class Workspace : AuditableEntity
     {

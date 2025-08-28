@@ -9,5 +9,6 @@ namespace SmartWorkspace.Domain.Users.Interfaces
     public class ICurrentUserService
     {
         string? UserId { get; }
+        bool IsAuthenticated { get; }
     }
 }
