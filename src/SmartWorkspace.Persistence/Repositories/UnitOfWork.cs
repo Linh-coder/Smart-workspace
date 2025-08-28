@@ -37,10 +37,12 @@ namespace SmartWorkspace.Persistence.Repositories
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Property(nameof(AuditableEntity.CreatedAt)).CurrentValue = DateTime.UtcNow;
+                        // entry.Property(nameof(AuditableEntity.CreatedAt)).CurrentValue = DateTime.UtcNow;
+                        entry.Entity.MarkAsCreated();
                         break;
                     case EntityState.Modified:
-                        entry.Property(nameof(AuditableEntity.UpdatedAt)).CurrentValue = DateTime.UtcNow;
+                        // entry.Property(nameof(AuditableEntity.UpdatedAt)).CurrentValue = DateTime.UtcNow;
+                        entry.Entity.MarkAsUpdated();
                         break;
                 }
             }

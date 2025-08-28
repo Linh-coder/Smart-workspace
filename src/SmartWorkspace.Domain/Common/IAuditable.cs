@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Common
 {
-    public class IAuditable
+    public interface IAuditableEntity
     {
+        DateTime CreatedAt { get; }
+        DateTime UpdatedAt { get; }
+        string? CreatedBy { get; }
+        string? UpdatedBy { get; }
+
+        void MarkAsCreated(string? createdBy = null);
+        void MarkAsUpdated(string? updatedBy = null);
     }
 }

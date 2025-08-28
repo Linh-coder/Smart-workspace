@@ -9,9 +9,12 @@ namespace SmartWorkspace.Domain.Users
 {
     public class User : AuditableEntity
     {
-        public string FullName { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
+        public string FullName { get; set; } = default!;
+        public string Email { get; set; } = default!;
+        public string PasswordHash { get; set; } = default!;
+        public bool IsEmailConfirmed { get; set; } = false;
+        public bool IsActive { get; set; } = true;
+        public DateTime? LastLoginAt { get; set; }
         public ICollection<UserWorkspaceRole> WorkspaceRoles { get; set; } = new List<UserWorkspaceRole>();
     }
 }
