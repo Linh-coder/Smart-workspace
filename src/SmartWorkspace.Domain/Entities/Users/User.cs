@@ -17,7 +17,7 @@ namespace SmartWorkspace.Domain.Entities.Users
         public DateTime? LastLoginAt { get; set; }
 
         // Navigation properties
-        public ICollection<UserWorkspaceRole> WorkspaceRoles { get; set; } = new List<UserWorkspaceRole>();
-        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+        public virtual ICollection<UserWorkspaceRole> WorkspaceRoles { get; set; } = new List<UserWorkspaceRole>();
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

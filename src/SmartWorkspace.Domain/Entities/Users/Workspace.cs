@@ -16,7 +16,7 @@ namespace SmartWorkspace.Domain.Entities.Users
         public Guid OwnerId { get; set; }
 
         // Navigation properties
-        public ICollection<UserWorkspaceRole> UserRoles { get; set; } = new List<UserWorkspaceRole>();
+        public virtual ICollection<UserWorkspaceRole> UserRoles { get; set; } = new List<UserWorkspaceRole>();
 
     }
 }

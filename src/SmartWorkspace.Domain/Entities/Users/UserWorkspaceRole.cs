@@ -15,8 +15,8 @@ namespace SmartWorkspace.Domain.Entities.Users
         public bool IsActive { get; set; }
 
         // Navigation properties
-        public Role Role { get; set; } = default!;
-        public User User { get; set; } = default!;
-        public Workspace Workspace { get; set; } = default!;
+        public virtual Role Role { get; set; } = default!;
+        public virtual User User { get; set; } = default!;
+        public virtual Workspace Workspace { get; set; } = default!;
     }
 }
