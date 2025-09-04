@@ -15,6 +15,9 @@ namespace SmartWorkspace.Domain.Entities.Users
         public bool IsEmailConfirmed { get; set; } = false;
         public bool IsActive { get; set; } = true;
         public DateTime? LastLoginAt { get; set; }
+
+        // Navigation properties
         public ICollection<UserWorkspaceRole> WorkspaceRoles { get; set; } = new List<UserWorkspaceRole>();
+        public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
     }
 }

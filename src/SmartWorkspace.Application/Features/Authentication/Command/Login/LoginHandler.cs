@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using SmartWorkspace.Application.Common.Interfaces;
 using SmartWorkspace.Application.Features.Authentication.DTOs;
-using SmartWorkspace.Application.Interfaces;
 using SmartWorkspace.Domain.Entities.Users;
 using SmartWorkspace.Domain.Repositories;
 using SmartWorkspace.Domain.Specifications.UserSpecifications;

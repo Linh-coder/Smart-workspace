@@ -10,28 +10,28 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Persistence.Configurations
 {
-    public class RoleConfiguration : BaseEntityConfiguration<Role>
+    public class PermissionConfiguration : BaseEntityConfiguration<Permission>
     {
-        protected override void ConfigureEntity(EntityTypeBuilder<Role> builder)
+        protected override void ConfigureEntity(EntityTypeBuilder<Permission> builder)
         {
             // Table Name
-            builder.ToTable("Roles");
+            builder.ToTable("Permissions");
 
             // Properties
-            builder.Property(u => u.Name)
+            builder.Property(u => u.Key)
                 .IsRequired()
                 .HasMaxLength(50);
 
 
             // Indexes
-            builder.HasIndex(u => u.Name)
+            builder.HasIndex(u => u.Key)
                 .IsUnique()
-                .HasDatabaseName("IX_Roles_Name");
+                .HasDatabaseName("IX_Permission_Key");
 
             // Relationship
             builder.HasMany(u => u.RolePermissions)
-                .WithOne(rt => rt.Role)
-                .HasForeignKey(rt => rt.RoleId)
+                .WithOne(rt => rt.Permission)
+                .HasForeignKey(rt => rt.PermissionId)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

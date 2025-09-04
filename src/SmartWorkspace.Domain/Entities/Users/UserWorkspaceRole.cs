@@ -7,13 +7,16 @@ using SmartWorkspace.Domain.Common;
 
 namespace SmartWorkspace.Domain.Entities.Users
 {
-    public class UserWorkspaceRole : BaseEntity
+    public class UserWorkspaceRole : AuditableEntity
     {
         public Guid UserId {  get; set; }
-        public User User { get; set; } = default!;
         public Guid WorkspaceId { get; set; }
-        public Workspace Workspace { get; set; } = default!;
         public Guid RoleId { get; set; }
+        public bool IsActive { get; set; }
+
+        // Navigation properties
         public Role Role { get; set; } = default!;
+        public User User { get; set; } = default!;
+        public Workspace Workspace { get; set; } = default!;
     }
 }

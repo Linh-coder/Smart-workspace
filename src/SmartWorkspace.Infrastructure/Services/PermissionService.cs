@@ -38,7 +38,7 @@ namespace SmartWorkspace.Infrastructure.Services
             // Load from DB
             var permissions = await _db.UserWorkspaceRoles
                 .Where(x => x.UserId == userId)
-                .SelectMany(x => x.Role.Permissions)
+                .SelectMany(x => x.Role.RolePermissions)
                 .Select(x => x.Role.Name)
                 .Distinct()
                 .ToListAsync();

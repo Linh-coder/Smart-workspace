@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using SmartWorkspace.Application.Common.Interfaces;
-using SmartWorkspace.Application.Interfaces;
 using SmartWorkspace.Domain.Entities.Users;
 using SmartWorkspace.Domain.Users.Interfaces;
 using SmartWorkspace.Infrastructure.Services;

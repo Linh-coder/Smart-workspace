@@ -32,7 +32,8 @@ namespace SmartWorkspace.Persistence.Repositories
 
         public async Task<int> SaveChangeAsync(CancellationToken cancellationToken = default)
         {
-            foreach (var entry in _context.ChangeTracker.Entries<AuditableEntity>())
+            var entities = _context.ChangeTracker.Entries<AuditableEntity>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+            foreach (var entry in entities)
             {
                 switch (entry.State)
                 {

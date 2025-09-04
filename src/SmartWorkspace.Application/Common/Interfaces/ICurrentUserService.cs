@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartWorkspace.Domain.Users.Interfaces
 {
-    public class ICurrentUserService
+    public interface ICurrentUserService
     {
         string? UserId { get; }
         bool IsAuthenticated { get; }

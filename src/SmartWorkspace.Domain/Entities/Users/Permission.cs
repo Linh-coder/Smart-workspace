@@ -11,5 +11,8 @@ namespace SmartWorkspace.Domain.Entities.Users
     {
         public string Key { get; set; } = default!; // ex: "Workspace.Create"
         public string Description { get; set; } = default!;
+
+        // Navigation properties
+        public ICollection<RolePermission> RolePermissions { get; set; } = new List<RolePermission>();
     }
 }

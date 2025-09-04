@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Application.Interfaces
+namespace SmartWorkspace.Application.Common.Interfaces
 {
     public interface ITokenService
     {
         Task<TokenResult> GenerateTokenAsync(User user);
         Task<TokenResult> RefreshTokenAsync(string refreshToken);
-        Task<bool> RevokeTokenAsync(string refreshToken);
+        Task<bool> RevokeTokenAsync(string refreshToken, string? reason = null, string? revokeByIp = null);
     }
 
     public record TokenResult(

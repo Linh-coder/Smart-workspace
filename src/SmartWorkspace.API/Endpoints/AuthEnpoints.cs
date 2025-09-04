@@ -2,7 +2,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using SmartWorkspace.Application.Features.Auth.Login;
+using SmartWorkspace.Application.Features.Authentication.Command.RefreshTokens;
 using SmartWorkspace.Application.Features.Authentication.Command.Register;
+using SmartWorkspace.Application.Features.Authentication.Command.RevokeToken;
 using SmartWorkspace.Application.Features.Authentication.DTOs;
 using SmartWorkspace.Domain.Users.Models;
 
@@ -27,6 +29,19 @@ namespace SmartWorkspace.API.Endpoints
                 .WithName("Register")
                 .WithSummary("User Registration")
                 .Produces<AuthResponse>(StatusCodes.Status201Created)
+                .Produces(StatusCodes.Status400BadRequest);
+
+            authGroup.MapPost("/refresh-token", RefreshTokenAsync)
+                .WithName("RefreshToken")
+                .WithSummary("Refresh access token")
+                .Produces<AuthResponse>(StatusCodes.Status200OK)
+                .Produces(StatusCodes.Status200OK)
+                .Produces(StatusCodes.Status401Unauthorized);
+
+            authGroup.MapPost("/revoke-token", RevokeTokenAsync)
+                .WithName("RevokeToken")
+                .WithSummary("Revoke refresh token")
+                .Produces<AuthResponse>(StatusCodes.Status200OK)
                 .Produces(StatusCodes.Status400BadRequest);
         }
 
@@ -73,6 +88,44 @@ namespace SmartWorkspace.API.Endpoints
                     detail: ex.Message,
                     statusCode: StatusCodes.Status500InternalServerError,
                     title: "An error occurred while processing the login request"
+                );
+            }
+        }
+
+        private static async Task<IResult> RefreshTokenAsync(RefreshTokenRequest request, IMediator mediator)
+        {
+            try
+            {
+                var command = new RefreshTokenCommand(request);
+                var result = await mediator.Send(command);
+                if (result.IsSuccess) return Results.Ok(result.Data);
+                return Results.Unauthorized();
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "An error occurred while refreshing token"
+                );
+            }
+        }
+
+        private static async Task<IResult> RevokeTokenAsync(RevokeTokenRequest request, IMediator mediator)
+        {
+            try
+            {
+                var command = new RevokeTokenCommand(request);
+                var result = await mediator.Send(command);
+                if (result.IsSuccess) return Results.Ok(new {message = "Token revoke successfully"});
+                return Results.BadRequest(new { message = result.ErrorMessage});
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(
+                    detail: ex.Message,
+                    statusCode: StatusCodes.Status500InternalServerError,
+                    title: "An error occurred while revoke the token"
                 );
             }
         }

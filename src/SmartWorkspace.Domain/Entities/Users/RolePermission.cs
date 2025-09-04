@@ -7,7 +7,7 @@ using SmartWorkspace.Domain.Common;
 
 namespace SmartWorkspace.Domain.Entities.Users
 {
-    public class RolePermission : BaseEntity
+    public class RolePermission : AuditableEntity
     {
         public Guid RoleId { get; set; }
         public Role Role { get; set; } = default!;

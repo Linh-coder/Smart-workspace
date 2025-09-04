@@ -14,7 +14,9 @@ namespace SmartWorkspace.Domain.Entities.Users
         public string Description { get; set; } = default!;
         public bool IsActive { get; set; } = true;
         public Guid OwnerId { get; set; }
-        public ICollection<UserWorkspaceRole> Members { get; set; } = new List<UserWorkspaceRole>();
+
+        // Navigation properties
+        public ICollection<UserWorkspaceRole> UserRoles { get; set; } = new List<UserWorkspaceRole>();
 
     }
 }
