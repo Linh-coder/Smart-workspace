@@ -19,9 +19,13 @@ builder.Services
 
 var app = builder.Build();
 
+//Initialize database
+await app.InitializeDatabaseAsync();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.MapOpenApi();
 }
 

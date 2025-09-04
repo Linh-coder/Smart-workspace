@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmartWorkspace.Domain.Entities;
 using SmartWorkspace.Domain.Entities.Users;
-using SmartWorkspace.Persistence.Configurations.BaseConfiguration;
+using SmartWorkspace.Persistence.Configurations.CommonConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Linq;

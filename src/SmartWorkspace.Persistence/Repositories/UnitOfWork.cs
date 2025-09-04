@@ -32,15 +32,11 @@ namespace SmartWorkspace.Persistence.Repositories
 
         public async Task<int> SaveChangeAsync(CancellationToken cancellationToken = default)
         {
-            var entities = _context.ChangeTracker.Entries<AuditableEntity>().Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+            var entities = _context.ChangeTracker.Entries<AuditableEntity>().Where(e => e.State == EntityState.Modified);
             foreach (var entry in entities)
             {
                 switch (entry.State)
                 {
-                    case EntityState.Added:
-                        // entry.Property(nameof(AuditableEntity.CreatedAt)).CurrentValue = DateTime.UtcNow;
-                        entry.Entity.MarkAsCreated();
-                        break;
                     case EntityState.Modified:
                         // entry.Property(nameof(AuditableEntity.UpdatedAt)).CurrentValue = DateTime.UtcNow;
                         entry.Entity.MarkAsUpdated();

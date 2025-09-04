@@ -8,16 +8,10 @@ namespace SmartWorkspace.Domain.Common
 {
     public class AuditableEntity : BaseEntity, IAuditableEntity
     {
-        public DateTime CreatedAt { get; protected set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; init; } = DateTime.UtcNow;
+        public string? CreatedBy { get; init; } = default!;
         public DateTime UpdatedAt { get; protected set; }
-        public string? CreatedBy { get; protected set; }
         public string? UpdatedBy { get; protected set; }
-
-        public void MarkAsCreated(string? createdBy = null)
-        {
-            CreatedAt = DateTime.UtcNow;
-            CreatedBy = createdBy;
-        }
 
         public void MarkAsUpdated(string? updatedBy = null)
         {

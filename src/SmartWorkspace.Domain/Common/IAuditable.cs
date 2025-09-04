@@ -13,7 +13,6 @@ namespace SmartWorkspace.Domain.Common
         string? CreatedBy { get; }
         string? UpdatedBy { get; }
 
-        void MarkAsCreated(string? createdBy = null);
         void MarkAsUpdated(string? updatedBy = null);
     }
 }

@@ -10,8 +10,8 @@ namespace SmartWorkspace.Domain.Entities.Users
     public class RolePermission : AuditableEntity
     {
         public Guid RoleId { get; set; }
-        public Role Role { get; set; } = default!;
         public Guid PermissionId { get; set; }
+        public Role Role { get; set; } = default!;
         public Permission Permission { get; set; } = default!;
 
     }

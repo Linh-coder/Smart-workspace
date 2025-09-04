@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Persistence.Configurations.BaseConfiguration
+namespace SmartWorkspace.Persistence.Configurations.Common
 {
     public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : BaseEntity
     {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartWorkspace.Persistence.Configurations.BaseConfiguration
+namespace SmartWorkspace.Persistence.Configurations.CommonConfiguration
 {
     public abstract class BaseAuditEntityConfiguration<T> : IEntityTypeConfiguration<T> where T : AuditableEntity
     {
