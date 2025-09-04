@@ -89,6 +89,12 @@ namespace SmartWorkspace.Persistence.Seed
                 CreatedBy = "System"
             }));
 
+            // Set UpdatedAt cho tất cả rolePermissions
+            foreach (var rolePermission in rolePermissions)
+            {
+                rolePermission.MarkAsUpdated("System");
+            }
+
             await context.RolePermissions.AddRangeAsync(rolePermissions);
             await context.SaveChangesAsync();
         }

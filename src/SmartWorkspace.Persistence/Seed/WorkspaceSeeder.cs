@@ -58,6 +58,11 @@ namespace SmartWorkspace.Persistence.Seed
                 }
             };
 
+            foreach (var workspace in workspaces)
+            {
+                workspace.MarkAsUpdated("System");
+            }
+
             await context.Workspaces.AddRangeAsync(workspaces);
             await context.SaveChangesAsync();
         }

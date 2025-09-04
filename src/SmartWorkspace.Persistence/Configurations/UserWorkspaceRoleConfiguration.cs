@@ -23,7 +23,7 @@ namespace SmartWorkspace.Persistence.Configurations
             builder.Property(x => x.WorkspaceId)
                .IsRequired();
 
-            builder.Property(x => x.Role)
+            builder.Property(x => x.RoleId)
                .IsRequired();
 
             builder.Property(x => x.IsActive)
@@ -48,6 +48,10 @@ namespace SmartWorkspace.Persistence.Configurations
                 .HasForeignKey(x => x.WorkspaceId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasOne(x => x.Role)
+                .WithMany(x => x.UserWorkspaceRoles)
+                .HasForeignKey(x => x.RoleId)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

@@ -19,8 +19,7 @@ namespace SmartWorkspace.Persistence.Configurations
 
             // Properties
             builder.Property(u => u.RoleId)
-                .IsRequired()
-                .HasMaxLength(50);
+                .IsRequired();
 
             builder.Property(u => u.PermissionId)
                 .IsRequired();
@@ -29,10 +28,6 @@ namespace SmartWorkspace.Persistence.Configurations
             builder.HasIndex(u => new {u.RoleId, u.PermissionId})
                 .IsUnique()
                 .HasDatabaseName("IX_RolePermission_RoleId_PermissionId");
-
-            builder.HasIndex(u => u.PermissionId)
-                .IsUnique()
-                .HasDatabaseName("IX_RolePermission_PermissionId");
 
             // Relationship
             builder.HasOne(u => u.Role)

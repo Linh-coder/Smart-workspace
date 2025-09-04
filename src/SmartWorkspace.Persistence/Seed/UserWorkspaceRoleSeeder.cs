@@ -106,6 +106,11 @@ namespace SmartWorkspace.Persistence.Seed
                 }
             };
 
+            foreach (var userWorkspaceRole in userWorkspaceRoles)
+            {
+                userWorkspaceRole.MarkAsUpdated("System");
+            }
+
             await context.UserWorkspaceRoles.AddRangeAsync(userWorkspaceRoles);
             await context.SaveChangesAsync();
         }

@@ -39,7 +39,7 @@ namespace SmartWorkspace.Persistence.Configurations
                 .HasDefaultValue(true);
 
             builder.Property(u => u.LastLoginAt)
-                .HasColumnType("datetime2");
+                .HasColumnType("timestamptz");
 
             // Indexes
             builder.HasIndex(u => u.Email)
@@ -47,8 +47,7 @@ namespace SmartWorkspace.Persistence.Configurations
                 .HasDatabaseName("IX_Users_Email");
 
             builder.HasIndex(u => u.IsActive)
-                .IsUnique()
-                .HasDatabaseName("IX_Users_IsActive");
+                .HasDatabaseName("IX_Users_IsActive"); // Bỏ IsUnique()
 
             builder.HasIndex(u => new {u.Email, u.IsActive})
                 .IsUnique()

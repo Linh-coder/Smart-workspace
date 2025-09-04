@@ -19,15 +19,15 @@ namespace SmartWorkspace.Persistence.Configurations.CommonConfiguration
 
             // Properties
             builder.Property(u => u.Id)
-                .HasDefaultValueSql("NEWSEQUENTIALID()");
+                .HasDefaultValueSql("gen_random_uuid()");
 
             // Audit fields
             builder.Property(e => e.CreatedAt)
                 .IsRequired()
-                .HasColumnType("datetime2");
+                .HasColumnType("timestamptz");
 
             builder.Property(e => e.UpdatedAt)
-                .HasColumnType("datetime2");
+                .HasColumnType("timestamptz");
 
             builder.Property(e => e.CreatedBy)
                 .HasMaxLength(450);

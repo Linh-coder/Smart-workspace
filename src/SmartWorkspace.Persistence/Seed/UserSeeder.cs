@@ -79,6 +79,7 @@ namespace SmartWorkspace.Persistence.Seed
             foreach (var user in users)
             {
                 user.PasswordHash = passwordHasher.HashPassword(user, "SmartWorkspace@2024");
+                user.MarkAsUpdated("System"); // Set UpdatedAt và UpdatedBy
             }
 
             await context.Users.AddRangeAsync(users);

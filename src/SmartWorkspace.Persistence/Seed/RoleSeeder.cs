@@ -51,6 +51,14 @@ namespace SmartWorkspace.Persistence.Seed
                     Description = "Standard user with basic access rights",
                     IsActive = true,
                     IsSystemRole = true
+                },
+                new()
+                {
+                    Id = Guid.Parse("10000000-0000-0000-0000-000000000005"),
+                    Name = "Viewer",
+                    Description = "Read-only user with view access rights",
+                    IsActive = true,
+                    IsSystemRole = true
                 }
             };
 

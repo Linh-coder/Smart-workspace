@@ -16,7 +16,7 @@ namespace SmartWorkspace.Persistence.Configurations.Common
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Id)
-                .HasDefaultValueSql("NEWSEQUENTIAL()");
+                .HasDefaultValueSql("gen_random_uuid()");
 
             // Call derived configuration
             ConfigureEntity(builder);
